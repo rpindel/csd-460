@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 
+<head>
+  <link href="./loginsu.css" type="text/css" rel="stylesheet">
+</head>
+
 <?php
     session_start();
     include('config.php');
