@@ -21,7 +21,7 @@
             echo '<p class="error">The email address is already registered!</p>';
         }
         if ($query->rowCount() == 0) {
-            $query = $connection->prepare("INSERT INTO useraccounts(email,fname,lname,telephone,password) VALUES (:email,:fname,:lname,:telephone,:password_hash,)");
+            $query = $connection->prepare("INSERT INTO useraccounts(email,fname,lname,telephone,password) VALUES (:email,:fname,:lname,:telephone,:password_hash)");
             $query->bindParam("email", $email, PDO::PARAM_STR);
             $query->bindParam("fname", $fname, PDO::PARAM_STR);
             $query->bindParam("lname", $lname, PDO::PARAM_STR);

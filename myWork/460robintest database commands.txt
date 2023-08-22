@@ -1,11 +1,18 @@
 460robintest database commands
 
-CREATE TABLE User_Accounts (
-User_ID INT(10) Unsigned NOT NULL AUTO_INCREMENT,
-Email_Address VARCHAR(100) NOT NULL,
-First_Name VARCHAR(25) NOT NULL,
-Last_Name VARCHAR(25) NOT NULL,
-Telephone_Number VARCHAR(10),
+CREATE TABLE useraccounts (
+UserID INT(10) Unsigned NOT NULL AUTO_INCREMENT,
+Email VARCHAR(100) NOT NULL,
+Fname VARCHAR(25) NOT NULL,
+Lname VARCHAR(25) NOT NULL,
+Telephone VARCHAR(12),
 Password VARCHAR(255) NOT NULL,
-PRIMARY KEY(User_ID),
-UNIQUE KEY Email_Address (Email_Address));
+PRIMARY KEY(UserID),
+UNIQUE KEY Email (Email));
+
+CREATE TABLE reservations (
+CheckIn DATE NOT NULL,
+CheckOut DATE NOT NULL,
+NumberGuests ENUM('1', 2'. '3', '4', '5') NOT NULL,
+RoomSize ENUM('Double Full', 'Queen', "Double Queen', 'King) NOT NULL,
+UserID INT(10) Unsigned NOT NULL);
