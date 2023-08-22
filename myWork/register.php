@@ -45,28 +45,28 @@
 <form method="post" action="" name="signup-form">
   <div class="form-element">
     <label>Email Address</label>
-    <input type="email" name="email" required />
+    <input type="email" name="email" placeholder="Email Address" required />
   </div>
   <div class="form-element">
     <label>First Name</label>
-    <input type="text" name="fname" required />
+    <input type="text" name="fname" placeholder="First Name" required />
   </div>
   <div class="form-element">
     <label>Last Name</label>
-    <input type="text" name="lname" required />
+    <input type="text" name="lname" placeholder="Last Name" required />
   </div>
   <div class="form-element">
     <label>Telephone</label>
     <input type="tel" name="telephone" 
-      pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required />
+      pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Telephone" required />
   </div>
   <div class="form-element">
     <label>Password</label>
-    <input type="password" name="password" required />
+    <input type="password" name="password" placeholder="Password" required />
   </div>
   <div class="form-element">
     <label>Confirm Password</label>
-    <input type="password" name="cpassword" required />
+    <input type="password" name="cpassword" placeholder="Confirm Password" required />
   </div>
   <button type="submit" name="register" value="register">Register</button>
 </form>

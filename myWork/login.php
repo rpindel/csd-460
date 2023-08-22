@@ -15,13 +15,13 @@
         $query->execute();
         $result = $query->fetch(PDO::FETCH_ASSOC);
         if (!$result) {
-            echo '<p class="error">Username password combination is incorrect!</p>';
+            echo '<p class="error">Email address and password combination is incorrect!</p>';
         } else {
-            if (password_verify($password, $result['password'])) {
-                $_SESSION['userid'] = $result['id'];
+            if (password_verify($password, $result['Password'])) {
+                $_SESSION['userid'] = $result['UserID'];
                 echo '<p class="success">Congratulations, you are logged in!</p>';
             } else {
-                echo '<p class="error">Username password combination is incorrect!</p>';
+                echo '<p class="error">Email address and password combination is incorrect!</p>';
             }
         }
     }
@@ -30,11 +30,12 @@
 <form method="post" action="" name="signin-form">
   <div class="form-element">
     <label>Email Address</label>
-    <input type="email" name="email" placeholder="Email Address" required />
+    <input type="email" name="email" placeholder="Email Address" 
+      placeholder="Email Address" required />
   </div>
   <div class="form-element">
     <label>Password</label>
-    <input type="password" name="password" required />
+    <input type="password" name="password" placeholder="Password" required />
   </div>
   <button type="submit" name="login" value="login">Log In</button>
 </form>
