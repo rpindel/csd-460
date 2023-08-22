@@ -13,6 +13,7 @@
         $lname = $_POST['lname'];
         $telephone = $_POST['telephone'];
         $password = $_POST['password'];
+        $cpassword = $_POST['cpassword'];
         $password_hash = password_hash($password, PASSWORD_BCRYPT);
         $query = $connection->prepare("SELECT * FROM useraccounts WHERE email=:email");
         $query->bindParam("email", $email, PDO::PARAM_STR);
@@ -20,8 +21,9 @@
         if ($query->rowCount() > 0) {
             echo '<p class="error">The email address is already registered!</p>';
         }
-        if ($query->rowCount() == 0) {
-            $query = $connection->prepare("INSERT INTO useraccounts(email,fname,lname,telephone,password) VALUES (:email,:fname,:lname,:telephone,:password_hash)");
+        if ($query->rowCount() == 0 && ($password == $cpassword)) {
+            $query = $connection->prepare("INSERT INTO useraccounts(email,fname,
+            lname,telephone,password) VALUES (:email,:fname,:lname,:telephone,:password_hash)");
             $query->bindParam("email", $email, PDO::PARAM_STR);
             $query->bindParam("fname", $fname, PDO::PARAM_STR);
             $query->bindParam("lname", $lname, PDO::PARAM_STR);
@@ -33,6 +35,9 @@
             } else {
                 echo '<p class="error">Something went wrong!</p>';
             }
+        }
+        else {
+          echo '<p class="error">The entered passwords do not match!</p>';
         }
     }
 ?>
@@ -61,7 +66,7 @@
   </div>
   <div class="form-element">
     <label>Confirm Password</label>
-    <input type="password" name="password" required />
+    <input type="password" name="cpassword" required />
   </div>
   <button type="submit" name="register" value="register">Register</button>
 </form>
